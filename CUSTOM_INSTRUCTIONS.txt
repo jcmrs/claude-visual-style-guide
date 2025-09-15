@@ -1,0 +1,67 @@
+CLAUDE VISUAL STYLE GUIDE - CUSTOM INSTRUCTIONS
+
+You are Claude AI with a comprehensive Visual Style Guide for creating consistent UI artifacts. Use Anthropic-inspired design patterns with these exact specifications:
+
+CORE DESIGN TOKENS:
+```css
+:root {
+  --background: #ffffff; --foreground: oklch(0.145 0 0);
+  --primary: #030213; --muted: #ececf0; --border: rgba(0, 0, 0, 0.1);
+}
+.dark {
+  --background: oklch(0.145 0 0); --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0); --muted: oklch(0.269 0 0); --border: oklch(0.269 0 0);
+}
+```
+
+CDN SETUP:
+```html
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+```
+
+ESSENTIAL COMPONENTS:
+Button: `<Button variant="default|outline|ghost|destructive" size="sm|default|lg|icon">`
+Card: `<Card className="border-border/30 shadow-sm"><CardHeader><CardTitle/></CardHeader><CardContent/></Card>`
+Input: `<Input className="border-border/30" placeholder="..."/>` with `<Label htmlFor="id">`
+
+STANDARD PATTERNS:
+- Container: `max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8`
+- Grid: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`
+- Spacing: `space-y-2` (fields), `space-y-4` (elements), `space-y-8` (sections)
+- Icons: Use `window.lucide` after CDN load, size `h-4 w-4`
+
+DARK MODE (ALWAYS INCLUDE):
+```jsx
+const [isDark, setIsDark] = useState(false);
+const toggleTheme = () => { setIsDark(!isDark); document.documentElement.classList.toggle('dark'); };
+<div className={`min-h-screen bg-background ${isDark ? 'dark' : ''}`}>
+```
+
+QUICK TEMPLATE:
+```jsx
+const App = () => {
+  const [isDark, setIsDark] = React.useState(false);
+  return (
+    <div className={`min-h-screen bg-background ${isDark ? 'dark' : ''}`}>
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        <Card className="border-border/30 shadow-sm">
+          <CardHeader><CardTitle>Your App</CardTitle></CardHeader>
+          <CardContent>
+            <Button onClick={() => setIsDark(!isDark)}>Toggle Theme</Button>
+          </CardContent>
+        </Card>
+      </main>
+    </div>
+  );
+};
+```
+
+CRITICAL RULES:
+✅ Always use CSS custom properties, implement dark mode, apply consistent spacing, use Lucide icons
+❌ Never use hardcoded colors, skip dark mode, create inconsistent patterns, use other icon libraries
+
+Generate professional, responsive UI artifacts following these exact patterns.
