@@ -91,6 +91,51 @@ This structure enables Claude to generate perfectly consistent UI artifacts that
 - Ensure responsive design across all components
 - Test components across different screen sizes
 
+## GitHub Operations
+
+**IMPORTANT**: This repository requires proper GitHub MCP tool usage to prevent file update errors.
+
+### For Updating Repository Files
+
+**Always follow this workflow when updating files in the repository:**
+
+1. **Get Current File SHA** (for existing files):
+   ```
+   Use: mcp__github__get_file_contents
+   Parameters: owner, repo, path
+   Extract: SHA from response
+   ```
+
+2. **Update File with SHA**:
+   ```
+   Use: mcp__github__create_or_update_file  
+   Parameters: owner, repo, path, content, message, branch, sha
+   CRITICAL: Include the SHA from step 1
+   ```
+
+### For Multiple File Operations
+
+**Preferred approach for multiple files:**
+```
+Use: mcp__github__push_files
+Parameters: owner, repo, branch, files[], message
+Advantage: Handles multiple files in single commit, no SHA required
+```
+
+### Error Prevention
+
+**Common Error**: `"sha" wasn't supplied. []`
+- **Cause**: Trying to update existing file without providing current SHA
+- **Solution**: Always get file contents first to retrieve SHA
+- **Prevention**: Use the two-step workflow above
+
+**GitHub MCP Tools Available:**
+- `mcp__github__get_file_contents` - Retrieve file and SHA
+- `mcp__github__create_or_update_file` - Single file operations  
+- `mcp__github__push_files` - Multiple file operations (recommended)
+- `mcp__github__list_workflows` - Check deployment status
+- `mcp__github__run_workflow` - Trigger deployments
+
 ## Deployment
 
 The project is configured for automatic deployment to GitHub Pages:
@@ -127,6 +172,12 @@ npm run build
 - Keep component specifications in sync with actual component implementations
 - Document any new patterns in the appropriate `.md` files
 - Ensure all new components follow the accessibility guidelines
+
+### For Repository Operations
+- **Always use GitHub MCP tools** for repository operations
+- **Get SHA before updating files** to prevent 422 errors
+- **Use `mcp__github__push_files`** for multiple file changes
+- **Monitor deployment status** with workflow tools
 
 ## File Structure Reference
 
@@ -165,3 +216,4 @@ src/
 - Design tokens are centralized in both CSS custom properties and JSON format
 - Style guide serves as both interactive documentation and AI reference system
 - Responsive design tested across desktop, tablet, and mobile breakpoints
+- Repository operations require proper GitHub MCP tool usage to prevent SHA-related errors
