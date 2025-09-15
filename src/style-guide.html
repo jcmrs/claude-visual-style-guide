@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Visual Style Guide - Anthropic Design System</title>
+    <link rel="stylesheet" href="style-guide.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="min-h-screen bg-background transition-colors duration-200">
+    <!-- Theme Toggle -->
+    <div class="fixed top-6 right-6 z-50">
+        <button id="theme-toggle" class="btn-outline btn-icon bg-background/80 backdrop-blur-sm border-border/50">
+            <span id="theme-icon"></span>
+        </button>
+    </div>
+
+    <!-- Style Guide Content -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <header class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-2xl mb-6">
+                <div class="w-8 h-8 bg-primary-foreground rounded-lg"></div>
+            </div>
+            
+            <h1 class="mb-4 bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
+                Visual Style Guide
+            </h1>
+            
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                A comprehensive design system inspired by Anthropic and Claude.AI, 
+                featuring consistent UI components, typography, and interaction patterns 
+                for building cohesive web applications.
+            </p>
+            
+            <div class="flex items-center justify-center gap-6 mt-8 text-sm text-muted-foreground">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-chart-1 rounded-full"></div>
+                    <span>Tailwind CSS v4</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-chart-2 rounded-full"></div>
+                    <span>shadcn/ui Components</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-chart-3 rounded-full"></div>
+                    <span>React + TypeScript</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="space-y-16 mt-12">
+            <!-- Claude AI Reference Section -->
+            <section id="claude-reference" class="space-y-8">
+                <div>
+                    <h2 class="mb-4 flex items-center gap-3">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <i data-lucide="code" class="h-4 w-4 text-primary-foreground"></i>
+                        </div>
+                        Claude AI Reference
+                    </h2>
+                    <p class="text-muted-foreground max-w-3xl">
+                        Machine-readable specifications and quick reference for AI-assisted development. 
+                        Use these exact patterns for consistent implementation.
+                    </p>
+                </div>
+
+                <!-- Design Tokens -->
+                <div class="card border-border/30 shadow-sm">
+                    <div class="card-header border-b border-border/30">
+                        <div class="card-title flex items-center gap-2">
+                            <i data-lucide="palette" class="h-5 w-5"></i>
+                            Design Tokens
+                        </div>
+                    </div>
+                    <div class="card-content p-6">
+                        <div class="space-y-4">
+                            <p class="text-sm text-muted-foreground">
+                                Core CSS custom properties for consistent theming. Always use Tailwind classes that reference these tokens.
+                            </p>
+                            <div class="grid gap-3">
+                                <div class="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <code class="text-sm font-mono bg-background px-2 py-1 rounded">--background</code>
+                                        <span class="badge-outline font-mono text-xs">bg-background</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-muted-foreground">
+                                        <span>Light: #ffffff</span>
+                                        <div class="h-4 w-px bg-border"></div>
+                                        <span>Dark: oklch(0.145 0 0)</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <code class="text-sm font-mono bg-background px-2 py-1 rounded">--foreground</code>
+                                        <span class="badge-outline font-mono text-xs">text-foreground</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-muted-foreground">
+                                        <span>Light: oklch(0.145 0 0)</span>
+                                        <div class="h-4 w-px bg-border"></div>
+                                        <span>Dark: oklch(0.985 0 0)</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <code class="text-sm font-mono bg-background px-2 py-1 rounded">--primary</code>
+                                        <span class="badge-outline font-mono text-xs">bg-primary</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-muted-foreground">
+                                        <span>Light: #030213</span>
+                                        <div class="h-4 w-px bg-border"></div>
+                                        <span>Dark: oklch(0.985 0 0)</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                                    <div class="flex items-center gap-3">
+                                        <code class="text-sm font-mono bg-background px-2 py-1 rounded">--border</code>
+                                        <span class="badge-outline font-mono text-xs">border-border</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-muted-foreground">
+                                        <span>Light: rgba(0, 0, 0, 0.1)</span>
+                                        <div class="h-4 w-px bg-border"></div>
+                                        <span>Dark: oklch(0.269 0 0)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component Quick Reference -->
+                <div class="card border-border/30 shadow-sm">
+                    <div class="card-header border-b border-border/30">
+                        <div class="card-title flex items-center gap-2">
+                            <i data-lucide="layout" class="h-5 w-5"></i>
+                            Component Quick Reference
+                        </div>
+                    </div>
+                    <div class="card-content p-6">
+                        <div class="space-y-6">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <h4 class="font-medium">Button</h4>
+                                    <div class="flex gap-1">
+                                        <span class="badge-secondary text-xs">default</span>
+                                        <span class="badge-secondary text-xs">outline</span>
+                                        <span class="badge-secondary text-xs">ghost</span>
+                                        <span class="badge-secondary text-xs">destructive</span>
+                                    </div>
+                                </div>
+                                <code class="block text-sm bg-muted/50 p-3 rounded-md font-mono">
+                                    import { Button } from "./components/ui/button"
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Typography Section -->
+            <section id="typography">
+                <h2 class="mb-8">Typography</h2>
+                
+                <div class="grid gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Headings</div>
+                            <div class="card-description">
+                                Semantic heading hierarchy with consistent spacing and weights
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="space-y-6">
+                                <div>
+                                    <h1>Heading 1</h1>
+                                    <p class="text-sm text-muted-foreground mt-1">
+                                        Used for main page titles and primary headings
+                                    </p>
+                                </div>
+                                <div>
+                                    <h2>Heading 2</h2>
+                                    <p class="text-sm text-muted-foreground mt-1">
+                                        Used for section titles and secondary headings
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3>Heading 3</h3>
+                                    <p class="text-sm text-muted-foreground mt-1">
+                                        Used for subsection titles and component headings
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4>Heading 4</h4>
+                                    <p class="text-sm text-muted-foreground mt-1">
+                                        Used for minor headings and labels
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Body Text</div>
+                            <div class="card-description">
+                                Readable text styles for content and interfaces
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="space-y-4">
+                                <p>
+                                    This is regular body text with optimal readability and line height. 
+                                    It maintains excellent contrast ratios and comfortable spacing for 
+                                    extended reading sessions.
+                                </p>
+                                <p class="text-muted-foreground">
+                                    This is muted text, typically used for secondary information, 
+                                    captions, or less prominent content that still needs to be accessible.
+                                </p>
+                                <p class="text-sm">
+                                    Small text is used for fine print, metadata, timestamps, 
+                                    and other supporting information that doesn't require emphasis.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Color Palette Section -->
+            <section id="colors">
+                <h2 class="mb-8">Color Palette</h2>
+                
+                <div class="grid gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Core Colors</div>
+                            <div class="card-description">
+                                Primary color scheme with automatic dark mode support
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="space-y-2">
+                                    <div class="w-full h-16 bg-background border border-border rounded-lg"></div>
+                                    <div class="text-sm">
+                                        <div class="font-medium">Background</div>
+                                        <div class="text-muted-foreground">bg-background</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="w-full h-16 bg-foreground rounded-lg"></div>
+                                    <div class="text-sm">
+                                        <div class="font-medium">Foreground</div>
+                                        <div class="text-muted-foreground">text-foreground</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="w-full h-16 bg-primary rounded-lg"></div>
+                                    <div class="text-sm">
+                                        <div class="font-medium">Primary</div>
+                                        <div class="text-muted-foreground">bg-primary</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="w-full h-16 bg-muted rounded-lg"></div>
+                                    <div class="text-sm">
+                                        <div class="font-medium">Muted</div>
+                                        <div class="text-muted-foreground">bg-muted</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Buttons Section -->
+            <section id="buttons">
+                <h2 class="mb-8">Buttons</h2>
+                
+                <div class="grid gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Button Variants</div>
+                            <div class="card-description">
+                                Different button styles for various interaction levels
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex flex-wrap gap-3">
+                                <button class="btn-default">Default</button>
+                                <button class="btn-outline">Outline</button>
+                                <button class="btn-ghost">Ghost</button>
+                                <button class="btn-destructive">Destructive</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Button Sizes</div>
+                            <div class="card-description">
+                                Different button sizes for various contexts
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <button class="btn-default btn-sm">Small</button>
+                                <button class="btn-default">Default</button>
+                                <button class="btn-default btn-lg">Large</button>
+                                <button class="btn-default btn-icon">
+                                    <i data-lucide="settings" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forms Section -->
+            <section id="forms">
+                <h2 class="mb-8">Form Elements</h2>
+                
+                <div class="grid gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Input Fields</div>
+                            <div class="card-description">
+                                Text inputs, selects, and other form controls
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <form class="space-y-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-2">
+                                        <label for="firstName" class="text-sm font-medium">First Name</label>
+                                        <input id="firstName" type="text" placeholder="John" class="input border-border/30">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="lastName" class="text-sm font-medium">Last Name</label>
+                                        <input id="lastName" type="text" placeholder="Doe" class="input border-border/30">
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="email" class="text-sm font-medium">Email</label>
+                                    <input id="email" type="email" placeholder="john@example.com" class="input border-border/30">
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label for="message" class="text-sm font-medium">Message</label>
+                                    <textarea id="message" placeholder="Type your message..." class="textarea border-border/30 min-h-[100px]"></textarea>
+                                </div>
+                                
+                                <div class="flex justify-end gap-3">
+                                    <button type="button" class="btn-outline">Cancel</button>
+                                    <button type="submit" class="btn-default">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Display Section -->
+            <section id="data-display">
+                <h2 class="mb-8">Data Display</h2>
+                
+                <div class="grid gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Data Table</div>
+                            <div class="card-description">
+                                Structured data presentation with status indicators and progress
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="overflow-x-auto">
+                                <table class="table">
+                                    <thead>
+                                        <tr class="border-b border-border/30">
+                                            <th>User</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Progress</th>
+                                            <th class="text-right">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-border/30">
+                                            <td>
+                                                <div class="flex items-center gap-3">
+                                                    <div class="avatar">JD</div>
+                                                    <span class="font-medium">John Doe</span>
+                                                </div>
+                                            </td>
+                                            <td>Developer</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="progress-bar">
+                                                        <div class="progress-fill" style="width: 85%"></div>
+                                                    </div>
+                                                    <span class="text-xs text-muted-foreground">85%</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-right">
+                                                <button class="text-sm text-primary hover:underline">Edit</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-border/30">
+                                            <td>
+                                                <div class="flex items-center gap-3">
+                                                    <div class="avatar">SW</div>
+                                                    <span class="font-medium">Sarah Wilson</span>
+                                                </div>
+                                            </td>
+                                            <td>Designer</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="progress-bar">
+                                                        <div class="progress-fill" style="width: 92%"></div>
+                                                    </div>
+                                                    <span class="text-xs text-muted-foreground">92%</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-right">
+                                                <button class="text-sm text-primary hover:underline">Edit</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Activity Feed</div>
+                                <div class="card-description">
+                                    Scrollable list of recent activities
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="scroll-area h-64 w-full">
+                                    <div class="space-y-4">
+                                        <div class="flex items-start gap-3">
+                                            <div class="avatar">JD</div>
+                                            <div class="space-y-1 flex-1">
+                                                <p class="text-sm">
+                                                    <span class="font-medium">John Doe</span>
+                                                    <span class="text-muted-foreground">created a new project</span>
+                                                </p>
+                                                <p class="text-xs text-muted-foreground">2 hours ago</p>
+                                            </div>
+                                            <span class="badge badge-success text-xs">create</span>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="avatar">SW</div>
+                                            <div class="space-y-1 flex-1">
+                                                <p class="text-sm">
+                                                    <span class="font-medium">Sarah Wilson</span>
+                                                    <span class="text-muted-foreground">updated the design system</span>
+                                                </p>
+                                                <p class="text-xs text-muted-foreground">4 hours ago</p>
+                                            </div>
+                                            <span class="badge badge-info text-xs">update</span>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="avatar">MJ</div>
+                                            <div class="space-y-1 flex-1">
+                                                <p class="text-sm">
+                                                    <span class="font-medium">Mike Johnson</span>
+                                                    <span class="text-muted-foreground">completed the sprint</span>
+                                                </p>
+                                                <p class="text-xs text-muted-foreground">6 hours ago</p>
+                                            </div>
+                                            <span class="badge badge-warning text-xs">complete</span>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="avatar">ED</div>
+                                            <div class="space-y-1 flex-1">
+                                                <p class="text-sm">
+                                                    <span class="font-medium">Emily Davis</span>
+                                                    <span class="text-muted-foreground">commented on issue #123</span>
+                                                </p>
+                                                <p class="text-xs text-muted-foreground">8 hours ago</p>
+                                            </div>
+                                            <span class="badge badge-outline text-xs">comment</span>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="avatar">AT</div>
+                                            <div class="space-y-1 flex-1">
+                                                <p class="text-sm">
+                                                    <span class="font-medium">Alex Thompson</span>
+                                                    <span class="text-muted-foreground">deployed to production</span>
+                                                </p>
+                                                <p class="text-xs text-muted-foreground">12 hours ago</p>
+                                            </div>
+                                            <span class="badge badge-success text-xs">deploy</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Loading States</div>
+                                <div class="card-description">
+                                    Skeleton components for loading states
+                                </div>
+                            </div>
+                            <div class="card-content space-y-4">
+                                <div class="space-y-2">
+                                    <div class="skeleton h-4 w-3/4"></div>
+                                    <div class="skeleton h-4 w-1/2"></div>
+                                    <div class="skeleton h-4 w-5/6"></div>
+                                </div>
+                                
+                                <div class="separator"></div>
+                                
+                                <div class="flex items-center space-x-4">
+                                    <div class="skeleton h-12 w-12 rounded-full"></div>
+                                    <div class="space-y-2">
+                                        <div class="skeleton h-4 w-32"></div>
+                                        <div class="skeleton h-4 w-24"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Section -->
+            <section id="navigation">
+                <h2 class="mb-8">Navigation</h2>
+                
+                <div class="grid gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Main Navigation</div>
+                            <div class="card-description">
+                                Primary navigation with responsive design
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <nav class="border border-border/30 rounded-lg bg-background/95 backdrop-blur-sm">
+                                <div class="px-4 sm:px-6 lg:px-8">
+                                    <div class="flex items-center justify-between h-16">
+                                        <div class="flex-shrink-0">
+                                            <div class="w-8 h-8 bg-primary rounded-lg"></div>
+                                        </div>
+                                        <div class="hidden md:block">
+                                            <div class="flex items-center space-x-8">
+                                                <a href="#" class="text-foreground hover:text-muted-foreground transition-colors">Home</a>
+                                                <a href="#" class="text-muted-foreground hover:text-foreground transition-colors">About</a>
+                                                <a href="#" class="text-muted-foreground hover:text-foreground transition-colors">Services</a>
+                                                <a href="#" class="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+                                            </div>
+                                        </div>
+                                        <button class="btn-outline btn-icon md:hidden">
+                                            <i data-lucide="menu" class="h-4 w-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feedback Section -->
+            <section id="feedback">
+                <h2 class="mb-8">Feedback Components</h2>
+                
+                <div class="grid gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Alerts</div>
+                            <div class="card-description">
+                                System messages and notifications
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="space-y-4">
+                                <div class="alert alert-success">
+                                    <i data-lucide="check-circle" class="h-4 w-4"></i>
+                                    <div>
+                                        <div class="alert-title">Success</div>
+                                        <div class="alert-description">Your changes have been saved successfully.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-destructive">
+                                    <i data-lucide="alert-circle" class="h-4 w-4"></i>
+                                    <div>
+                                        <div class="alert-title">Error</div>
+                                        <div class="alert-description">Something went wrong. Please try again.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <i data-lucide="alert-triangle" class="h-4 w-4"></i>
+                                    <div>
+                                        <div class="alert-title">Warning</div>
+                                        <div class="alert-description">This action cannot be undone.</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-info">
+                                    <i data-lucide="info" class="h-4 w-4"></i>
+                                    <div>
+                                        <div class="alert-title">Information</div>
+                                        <div class="alert-description">New features are available in this update.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-24 pt-12 border-t border-border/30">
+            <div class="text-center text-muted-foreground">
+                <p>Visual Style Guide • Inspired by Anthropic & Claude.AI Design</p>
+                <p class="mt-2 text-sm">
+                    Use this guide to maintain consistent UI patterns across all artifacts
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+        
+        let isDark = false;
+        
+        function updateThemeIcon() {
+            themeIcon.innerHTML = isDark ? 
+                '<i data-lucide="sun" class="h-4 w-4"></i>' : 
+                '<i data-lucide="moon" class="h-4 w-4"></i>';
+            lucide.createIcons();
+        }
+        
+        function toggleTheme() {
+            isDark = !isDark;
+            body.classList.toggle('dark', isDark);
+            updateThemeIcon();
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        updateThemeIcon();
+    </script>
+</body>
+</html>

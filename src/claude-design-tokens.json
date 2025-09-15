@@ -1,0 +1,237 @@
+{
+  "designSystem": {
+    "name": "Anthropic Visual Style Guide",
+    "version": "1.0.0",
+    "description": "Claude AI design system reference with Anthropic-inspired aesthetics"
+  },
+  "colors": {
+    "semantic": {
+      "background": {
+        "light": "#ffffff",
+        "dark": "oklch(0.145 0 0)",
+        "usage": "bg-background",
+        "description": "Primary background color for pages and containers"
+      },
+      "foreground": {
+        "light": "oklch(0.145 0 0)",
+        "dark": "oklch(0.985 0 0)",
+        "usage": "text-foreground",
+        "description": "Primary text color with high contrast"
+      },
+      "primary": {
+        "light": "#030213",
+        "dark": "oklch(0.985 0 0)",
+        "usage": "bg-primary, text-primary",
+        "description": "Brand color for primary actions and emphasis"
+      },
+      "secondary": {
+        "light": "oklch(0.95 0.0058 264.53)",
+        "dark": "oklch(0.269 0 0)",
+        "usage": "bg-secondary",
+        "description": "Secondary background color for subtle emphasis"
+      },
+      "muted": {
+        "light": "#ececf0",
+        "dark": "oklch(0.269 0 0)",
+        "usage": "bg-muted",
+        "description": "Muted background for less prominent elements"
+      },
+      "muted-foreground": {
+        "light": "#717182",
+        "dark": "oklch(0.708 0 0)",
+        "usage": "text-muted-foreground",
+        "description": "Secondary text color with lower contrast"
+      },
+      "border": {
+        "light": "rgba(0, 0, 0, 0.1)",
+        "dark": "oklch(0.269 0 0)",
+        "usage": "border-border",
+        "description": "Border color for dividers and outlines"
+      },
+      "destructive": {
+        "light": "#d4183d",
+        "dark": "oklch(0.396 0.141 25.723)",
+        "usage": "bg-destructive",
+        "description": "Error and danger states"
+      }
+    }
+  },
+  "typography": {
+    "baseSize": "16px",
+    "fontWeights": {
+      "normal": 400,
+      "medium": 500
+    },
+    "elements": {
+      "h1": {
+        "fontSize": "var(--text-2xl)",
+        "fontWeight": "var(--font-weight-medium)",
+        "lineHeight": "1.5"
+      },
+      "h2": {
+        "fontSize": "var(--text-xl)",
+        "fontWeight": "var(--font-weight-medium)",
+        "lineHeight": "1.5"
+      },
+      "h3": {
+        "fontSize": "var(--text-lg)",
+        "fontWeight": "var(--font-weight-medium)",
+        "lineHeight": "1.5"
+      },
+      "p": {
+        "fontSize": "var(--text-base)",
+        "fontWeight": "var(--font-weight-normal)",
+        "lineHeight": "1.5"
+      }
+    },
+    "rules": [
+      "Do not override base typography with Tailwind classes unless specifically needed",
+      "HTML elements receive automatic styling when no text-* classes are present"
+    ]
+  },
+  "spacing": {
+    "scale": [2, 4, 6, 8, 12, 16, 20, 24],
+    "patterns": {
+      "sections": "space-y-8",
+      "forms": "space-y-6", 
+      "fields": "space-y-2",
+      "elements": "space-y-4"
+    }
+  },
+  "borderRadius": {
+    "default": "0.625rem",
+    "small": "calc(var(--radius) - 4px)",
+    "large": "var(--radius)",
+    "xl": "calc(var(--radius) + 4px)"
+  },
+  "components": {
+    "Button": {
+      "import": "import { Button } from \"./components/ui/button\"",
+      "variants": ["default", "outline", "ghost", "destructive"],
+      "sizes": ["sm", "default", "lg", "icon"],
+      "defaultUsage": "<Button variant=\"default\">Click me</Button>",
+      "patterns": {
+        "primary": "variant=\"default\"",
+        "secondary": "variant=\"outline\"",
+        "tertiary": "variant=\"ghost\"",
+        "danger": "variant=\"destructive\""
+      }
+    },
+    "Card": {
+      "import": "import { Card, CardContent, CardHeader, CardTitle } from \"./components/ui/card\"",
+      "defaultClasses": "border-border/30 shadow-sm",
+      "structure": {
+        "header": "CardHeader with border-b border-border/30",
+        "content": "CardContent with p-6",
+        "footer": "CardFooter with border-t border-border/30"
+      }
+    },
+    "Input": {
+      "import": "import { Input } from \"./components/ui/input\"",
+      "defaultClasses": "border-border/30",
+      "fieldPattern": "Label + Input in space-y-2 container"
+    },
+    "Alert": {
+      "import": "import { Alert, AlertDescription, AlertTitle } from \"./components/ui/alert\"",
+      "variants": {
+        "default": "General information",
+        "destructive": "Errors and warnings"
+      },
+      "iconPattern": "Include appropriate Lucide icon"
+    }
+  },
+  "layoutPatterns": {
+    "mainContainer": {
+      "classes": "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8",
+      "description": "Standard page wrapper with responsive padding"
+    },
+    "cardGrid": {
+      "classes": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+      "description": "Responsive grid for cards and content blocks"
+    },
+    "twoColumn": {
+      "classes": "grid grid-cols-1 lg:grid-cols-2 gap-8",
+      "description": "Two-column layout for larger screens"
+    },
+    "navigation": {
+      "classes": "border-b border-border/30 bg-background/95 backdrop-blur-sm sticky top-0 z-50",
+      "description": "Standard navigation with blur background"
+    }
+  },
+  "theming": {
+    "implementation": {
+      "state": "const [isDark, setIsDark] = useState(false)",
+      "toggle": "document.documentElement.classList.toggle('dark')",
+      "container": "className={`min-h-screen bg-background ${isDark ? 'dark' : ''}}`"
+    },
+    "rules": [
+      "Always implement dark mode support",
+      "Use CSS custom properties for all colors",
+      "Apply theme class to root container"
+    ]
+  },
+  "icons": {
+    "library": "lucide-react",
+    "standardSize": "h-4 w-4",
+    "largeSize": "h-5 w-5",
+    "smallSize": "h-3 w-3",
+    "commonIcons": [
+      "Home", "User", "Settings", "Search", "Menu", "X",
+      "ChevronDown", "ChevronRight", "ArrowLeft", "ArrowRight",
+      "Check", "AlertCircle", "Info", "Loader2", "Plus", "Trash2"
+    ]
+  },
+  "responsive": {
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px", 
+      "lg": "1024px",
+      "xl": "1280px"
+    },
+    "patterns": {
+      "grid": "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+      "text": "text-2xl sm:text-3xl lg:text-4xl",
+      "padding": "px-4 sm:px-6 lg:px-8"
+    }
+  },
+  "states": {
+    "loading": {
+      "button": "<Button disabled><Loader2 className=\"h-4 w-4 animate-spin mr-2\" />Loading...</Button>",
+      "page": "Centered spinner with text"
+    },
+    "empty": {
+      "pattern": "Icon + heading + description + action button",
+      "classes": "text-center py-12"
+    },
+    "error": {
+      "component": "Alert with variant=\"destructive\"",
+      "icon": "AlertCircle"
+    }
+  },
+  "guidelines": {
+    "required": [
+      "Use CSS custom properties from globals.css",
+      "Import shadcn/ui components correctly", 
+      "Implement dark mode support",
+      "Apply responsive design patterns",
+      "Use Lucide React for icons",
+      "Maintain consistent spacing"
+    ],
+    "forbidden": [
+      "Override base typography unnecessarily",
+      "Create custom shadcn component versions",
+      "Use hardcoded colors",
+      "Skip responsive considerations",
+      "Use different icon libraries",
+      "Ignore accessibility patterns"
+    ]
+  },
+  "quickStart": {
+    "imports": [
+      "import { useState } from \"react\"",
+      "import { Button } from \"./components/ui/button\"",
+      "import { Card, CardContent, CardHeader, CardTitle } from \"./components/ui/card\""
+    ],
+    "template": "See Guidelines.md for complete starter template"
+  }
+}
