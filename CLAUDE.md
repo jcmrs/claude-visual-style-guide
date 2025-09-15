@@ -59,7 +59,31 @@ src/
 - Responsive layout examples
 - Design token reference
 
-## Guidelines
+## Claude AI Integration Features
+
+This Visual Style Guide is optimized for Claude AI artifact generation with machine-readable specifications:
+
+### 1. Machine-Readable Documentation
+- **`CLAUDE_DESIGN_SYSTEM_GUIDE.md`** - Comprehensive guide with exact usage patterns and color variables
+- **`COMPONENT_SPECIFICATIONS.md`** - Detailed technical specifications for each component with import statements
+- **`Guidelines.md`** - Implementation guidelines and best practices
+- **`claude-design-tokens.json`** - Machine-readable JSON specification with exact CSS values and Tailwind usage
+
+### 2. Claude Reference Section
+- Interactive `ClaudeReferenceSection` component displays design tokens, component specs, and layout patterns
+- Shows exact import statements and variant options for consistent artifact generation
+- Includes expandable code examples and usage patterns
+- Features responsive design breakpoints and state management examples
+
+### 3. Structured Specifications
+- Design tokens with exact CSS values and semantic color mappings
+- Component imports and variant specifications for shadcn/ui components
+- Common layout patterns with ready-to-use code snippets
+- Quality checklist and implementation guidelines for artifact completion
+
+This structure enables Claude to generate perfectly consistent UI artifacts that match the design system specifications.
+
+## Development Guidelines
 
 - Follow existing React/TypeScript patterns
 - Use shadcn/ui components as base layer
@@ -67,9 +91,77 @@ src/
 - Ensure responsive design across all components
 - Test components across different screen sizes
 
+## Deployment
+
+The project is configured for automatic deployment to GitHub Pages:
+
+- **Live URL**: https://jcmrs.github.io/claude-visual-style-guide/
+- **GitHub Actions**: Automatically builds and deploys on push to main branch
+- **Build Output**: Vite builds to `./build` directory with correct base path
+- **Pages Configuration**: Uses GitHub Actions with Static HTML deployment
+
+### Manual Deployment
+```bash
+# Build for production
+npm run build
+
+# The build output in ./build/ is ready for static hosting
+```
+
+## Best Practices
+
+### For Claude AI Usage
+- Reference `CLAUDE_DESIGN_SYSTEM_GUIDE.md` for consistent color usage and component patterns
+- Use the `ClaudeReferenceSection` component as a quick reference for design tokens
+- Follow the exact import statements specified in `COMPONENT_SPECIFICATIONS.md`
+- Leverage `claude-design-tokens.json` for programmatic access to design values
+
+### For Development
+- Always use the design system's CSS custom properties instead of hardcoded colors
+- Import components from `./components/ui/[component]` following shadcn/ui patterns
+- Maintain the existing file structure when adding new components
+- Test dark/light theme compatibility for all new components
+
+### For Maintenance
+- Update `claude-design-tokens.json` when adding new design tokens
+- Keep component specifications in sync with actual component implementations
+- Document any new patterns in the appropriate `.md` files
+- Ensure all new components follow the accessibility guidelines
+
+## File Structure Reference
+
+```
+src/
+├── components/
+│   ├── ui/                          # shadcn/ui components (Button, Card, Input, etc.)
+│   ├── ClaudeReferenceSection.tsx   # AI-optimized reference component
+│   ├── StyleGuideHeader.tsx         # Main header component
+│   ├── ColorPaletteSection.tsx      # Color system showcase
+│   ├── TypographySection.tsx        # Typography specimens
+│   ├── ButtonsSection.tsx           # Button variants and states
+│   ├── FormsSection.tsx             # Form components and patterns
+│   ├── CardsSection.tsx             # Card layouts and variants
+│   ├── NavigationSection.tsx        # Navigation patterns
+│   ├── FeedbackSection.tsx          # Alerts, toasts, notifications
+│   ├── DataDisplaySection.tsx       # Tables, lists, data presentation
+│   ├── LayoutSection.tsx            # Grid systems and containers
+│   ├── StatusIndicatorsSection.tsx  # Loading states, progress, badges
+│   └── figma/
+│       └── ImageWithFallback.tsx    # Figma integration component
+├── styles/
+│   ├── globals.css                  # Design system CSS custom properties
+│   └── style-guide.css              # Style guide specific styles
+├── CLAUDE_DESIGN_SYSTEM_GUIDE.md   # Primary Claude AI reference
+├── COMPONENT_SPECIFICATIONS.md      # Technical component specs
+├── Guidelines.md                    # Implementation guidelines
+├── claude-design-tokens.json       # Machine-readable design tokens
+└── App.tsx                          # Main application component
+```
+
 ## Notes
 
-- Project includes comprehensive Claude design system documentation
-- Components are built following accessibility best practices
-- Design tokens are centralized in JSON format
-- Style guide is designed to be both functional and visually appealing
+- Project includes comprehensive Claude design system documentation optimized for AI consumption
+- Components are built following accessibility best practices with ARIA support
+- Design tokens are centralized in both CSS custom properties and JSON format
+- Style guide serves as both interactive documentation and AI reference system
+- Responsive design tested across desktop, tablet, and mobile breakpoints
