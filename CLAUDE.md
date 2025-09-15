@@ -161,7 +161,14 @@ After completing significant tasks, evaluate:
 
 ## GitHub Operations
 
-**IMPORTANT**: This repository requires proper GitHub MCP tool usage to prevent file update errors.
+**CRITICAL**: Always use GitHub MCP tools when available - NEVER use git push/pull commands when MCP is accessible.
+
+### Primary Rule: MCP Tools First
+**When GitHub MCP tools are available (indicated by successful mcp__github__ commands):**
+- Use `mcp__github__push_files` for all repository commits
+- Use `mcp__github__get_file_contents` to retrieve file contents and SHAs
+- Use `mcp__github__create_or_update_file` for single file updates
+- Avoid `git push`, `git pull`, `git merge` commands entirely
 
 ### For Updating Repository Files
 
@@ -197,10 +204,15 @@ Advantage: Handles multiple files in single commit, no SHA required
 - **Solution**: Always get file contents first to retrieve SHA
 - **Prevention**: Use the two-step workflow above
 
+**Common Error**: Git push timeouts
+- **Cause**: Using git commands when GitHub MCP tools are available and functional
+- **Solution**: Use `mcp__github__push_files` instead of `git push`
+- **Prevention**: Always try MCP tools first, fall back to git only if MCP unavailable
+
 **GitHub MCP Tools Available:**
 - `mcp__github__get_file_contents` - Retrieve file and SHA
 - `mcp__github__create_or_update_file` - Single file operations  
-- `mcp__github__push_files` - Multiple file operations (recommended)
+- `mcp__github__push_files` - Multiple file operations (preferred)
 - `mcp__github__list_workflows` - Check deployment status
 - `mcp__github__run_workflow` - Trigger deployments
 
@@ -242,7 +254,8 @@ npm run build
 - Ensure all new components follow the accessibility guidelines
 
 ### For Repository Operations
-- **Always use GitHub MCP tools** for repository operations
+- **ALWAYS use GitHub MCP tools first** when available
+- **Never use git push/pull when MCP works** - causes timeouts and inefficiency
 - **Get SHA before updating files** to prevent 422 errors
 - **Use `mcp__github__push_files`** for multiple file changes
 - **Monitor deployment status** with workflow tools
@@ -286,3 +299,4 @@ src/
 - Responsive design tested across desktop, tablet, and mobile breakpoints
 - Repository operations require proper GitHub MCP tool usage to prevent SHA-related errors
 - Self-improvement protocol enables continuous documentation enhancement through structured learning
+- **CRITICAL**: Always use GitHub MCP tools when available - git commands cause timeouts and inefficiency
