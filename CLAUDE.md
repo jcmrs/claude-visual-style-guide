@@ -83,6 +83,74 @@ This Visual Style Guide is optimized for Claude AI artifact generation with mach
 
 This structure enables Claude to generate perfectly consistent UI artifacts that match the design system specifications.
 
+## Claude Code Self-Improvement Protocol
+
+This meta-framework enables continuous enhancement of project documentation and workflows through structured learning and reflection.
+
+### Workflow Enhancement Rules
+
+1. **Before Major Operations**: Check if CLAUDE.md has specific instructions for the task
+2. **After Encountering Errors**: Document solution and develop prevention steps
+3. **When Completing Tasks**: Reflect on workflow efficiency and knowledge gaps
+4. **Review/Report**: Present improvement opportunities to user with specific recommendations
+5. **If Gaps Found and Approved**: Update CLAUDE.md with approved improvements
+
+### Review/Report Format
+
+When identifying improvement opportunities, present:
+
+```
+**Issue Identified**: [Brief description of gap, error, or inefficiency]
+**Proposed Solution**: [Specific CLAUDE.md addition or modification]  
+**Rationale**: [Why this would improve future interactions]
+**Request**: "Should I add this improvement to CLAUDE.md?"
+```
+
+### Autonomous Mode Override
+
+**Learning Curve Recognition**: User may instruct Claude Code to operate autonomously by saying:
+- *"Skip review/report and apply improvements directly"*
+- *"Use autonomous mode for documentation updates"* 
+- *"I trust your judgment on CLAUDE.md improvements"*
+
+**When in Autonomous Mode**:
+- Apply steps 1-3 and 5 directly
+- Skip step 4 (Review/Report)
+- Continue until user requests return to review mode
+- Still announce what improvements were made
+
+### Error Response Protocol
+
+**Systematic Error Learning**:
+1. **Pattern Recognition**: Identify error type and root cause
+2. **Immediate Resolution**: Fix the current issue
+3. **Prevention Documentation**: Add specific prevention guidelines
+4. **Workflow Integration**: Update operational procedures
+5. **Knowledge Persistence**: Ensure future sessions inherit the learning
+
+### Self-Reflection Checkpoints
+
+After completing significant tasks, evaluate:
+- **Efficiency**: Were there workflow bottlenecks or redundancies?
+- **Knowledge Gaps**: What information would have accelerated the work?
+- **Tool Usage**: Could different tools or approaches have been better?
+- **Documentation Quality**: Are instructions clear and complete?
+- **Pattern Recognition**: What patterns emerge that should be systematized?
+
+### Meta-Documentation Guidelines
+
+**Improvement Criteria**:
+- Solutions must be **specific and actionable**
+- Instructions must be **clear for future Claude Code sessions**
+- Changes must **improve efficiency or accuracy**
+- Documentation must remain **concise and well-organized**
+
+**Update Principles**:
+- Add error prevention steps immediately after resolution
+- Document successful patterns for reuse
+- Remove obsolete instructions when tools or workflows change
+- Maintain logical organization and findability
+
 ## Development Guidelines
 
 - Follow existing React/TypeScript patterns
@@ -217,3 +285,4 @@ src/
 - Style guide serves as both interactive documentation and AI reference system
 - Responsive design tested across desktop, tablet, and mobile breakpoints
 - Repository operations require proper GitHub MCP tool usage to prevent SHA-related errors
+- Self-improvement protocol enables continuous documentation enhancement through structured learning
